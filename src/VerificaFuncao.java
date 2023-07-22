@@ -15,9 +15,17 @@ class VerificaFuncao {
         System.out.println("Dominio da função: " + dominio);
         System.out.println("Imagem da função: " + imagem);
 
-        LerConteudo.LerConteudo(dominio);
-        LerConteudo.LerConteudo(imagem);
+        
+        double[] array_dominio,array_imagem;
+        array_dominio = RetornaArrayDoConteudo.RetornaArrayDoConteudo(dominio);
+        array_imagem = RetornaArrayDoConteudo.RetornaArrayDoConteudo(imagem);
        
+        System.out.println("Isso é uma função válida? ");
+        if( VerificadorDeRelacao.VerificadorDeRelacao(array_dominio, array_imagem) == true ) {
+          System.out.println("É Função!");
+        } else {
+          System.out.println("Não é Função!");
+        }
       }
     }
   }

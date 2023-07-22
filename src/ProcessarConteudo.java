@@ -1,13 +1,13 @@
 public class ProcessarConteudo {
-  public static int[] ProcessarConteudo( String conteudo) {
+  public static double[] ProcessarConteudo( String conteudo) {
     if (conteudo == null || conteudo.isEmpty()) {
       return null;
     }
     String[] numerosStr = conteudo.split(",");
-    int[] numeros = new int[numerosStr.length];
+    double[] numeros = new double[numerosStr.length];
 
     for (int  i=0; i < numerosStr.length; i++) {
-      numeros[i] = Integer.parseInt(numerosStr[i].trim());
+      numeros[i] = Double.parseDouble(numerosStr[i].trim());
     }
     return numeros;
   }
