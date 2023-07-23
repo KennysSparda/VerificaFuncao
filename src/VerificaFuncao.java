@@ -1,30 +1,32 @@
 class VerificaFuncao {
   public static void main(String args[]) {
-    if ( args.length == 0 || args[0].equals("--help") || args[0].equals("-H")) {
+    if (  args[0] == null || args[1] == null || args[2] == null || args[3] == null || args[0].equals("--help") || args[0].equals("-H")) {
       ShowHelp.ShowHelp();
     } else {
       if ( args[0].equals("--version") || args[0].equals("-V")) {
         ShowVersion.ShowVersion();
       } else {
-        String dominio = LerArquivoTXT.LerArquivoTXT(args[0]);
-        String imagem = LerArquivoTXT.LerArquivoTXT(args[1]);
- 
-        System.out.println("argumento 1:" + args[0]);
-        System.out.println("argumento 2:" + args[1]);
 
-        System.out.println("Dominio da função: " + dominio);
-        System.out.println("Imagem da função: " + imagem);
-
+        double A = Double.parseDouble(args[0]);
+        double B = Double.parseDouble(args[1]);
+        String dominio = LerArquivoTXT.LerArquivoTXT(args[2]);
+        String contradominio = LerArquivoTXT.LerArquivoTXT(args[3]);
+        double[] array_dominio = RetornaArrayDoConteudo.RetornaArrayDoConteudo(dominio);
+        double[] array_contradominio = RetornaArrayDoConteudo.RetornaArrayDoConteudo(contradominio); 
+        String strA = (String) String.format("%.0f", A);
+        String strB = (String) String.format("%.0f", B);
         
-        double[] array_dominio,array_imagem;
-        array_dominio = RetornaArrayDoConteudo.RetornaArrayDoConteudo(dominio);
-        array_imagem = RetornaArrayDoConteudo.RetornaArrayDoConteudo(imagem);
-       
-        System.out.println("Isso é uma função válida? ");
-        if( VerificadorDeRelacao.VerificadorDeRelacao(array_dominio, array_imagem) == true ) {
-          System.out.println("É Função!");
+        System.out.print("Função do primeiro grau: "+strA+"X+"+strB);
+        System.out.print("Dominio da relação: " + dominio);
+        System.out.print("contradominio da relação: " + contradominio);
+        boolean eFuncao = VerificadorDeRelacao.VerificadorDeRelacao(A, B, array_dominio, array_contradominio);
+
+ 
+        System.out.println("Essa relação é uma função válida? ");
+        if( eFuncao == true ) {
+          System.out.println("SIM! É Função.");
         } else {
-          System.out.println("Não é Função!");
+          System.out.println("NÃO! Não é Função.");
         }
       }
     }
